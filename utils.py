@@ -281,7 +281,7 @@ def get_label(path):
 	if os.path.isfile(os.path.join(path, '.switch_label')):
 		try:
 			with open(os.path.join(path, '.switch_label')) as f:
-				label = f.readline().strip()
+				label = f.readline(5_000_000).strip()
 
 				if len(label) > 0:
 					return label
