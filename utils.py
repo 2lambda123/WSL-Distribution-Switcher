@@ -188,7 +188,7 @@ def probe_wsl(silent = False):
 	else:
 		print('JPST: not yet fixed when running this process via cygwin, sorry!')
 		sys.exit(-1)
-		basedir = subprocess.check_output('/usr/bin/cygpath -F 0x001c', shell = True, universal_newlines = True)
+		basedir = subprocess.check_output('/usr/bin/cygpath -F 0x001c', shell = False, universal_newlines = True)
 		basedir = os.path.join(basedir.strip(), 'lxss')
 
 	if not os.path.isdir(basedir):
@@ -209,7 +209,7 @@ def probe_wsl(silent = False):
 	if not is_cygwin:
 		syspath = os.getenv('SystemRoot')
 	else:
-		syspath = subprocess.check_output('/usr/bin/cygpath -W', shell = True, universal_newlines = True).strip()
+		syspath = subprocess.check_output('/usr/bin/cygpath -W', shell = False, universal_newlines = True).strip()
 
 	lxpath  = ''
 	#methinks location in System32 is from legacy installer
